@@ -15,3 +15,36 @@ kubectl create namespace ceph
 ```bash
 kubectl -n ceph create -f .
 ```
+## 测试pvc
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: csi-cephfs-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: csi-cephfs-sc
+```
+## 测试pod
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: csi-cephfs-demo-pod
+spec:
+  containers:
+    - name: web-server
+      image: docker.io/library/nginx:latest
+      volumeMounts:
+        - name: mypvc
+          mountPath: /var/lib/www
+  volumes:
+    - name: mypvc
+      persistentVolumeClaim:
+        claimName: csi-cephfs-pvc
+        readOnly: false
+```
