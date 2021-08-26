@@ -13,5 +13,5 @@ kubectl create namespace ceph
 将clusterID改为您的ceph集群id，fsName修改为您的ceph集群的cephfs文件系统名称
 ## 创建csi
 ```bash
-kubectl create -f .
+kubectl -n ceph create -f .
 ```
