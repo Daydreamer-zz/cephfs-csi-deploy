@@ -1,5 +1,5 @@
 #  cephfs-csi-deploy
-一个cephfs和kubernetes StorageClass集成示例,驱动镜像已经同步至阿里云镜像仓库,要求ceph版本>=14.2.2，建议使用Nautilus版，并且ceph集群已经创建好存储池和文件系统
+一个cephfs和kubernetes StorageClass集成示例，驱动镜像已经同步至阿里云镜像仓库，要求ceph版本>=14.2.2，建议使用Nautilus版，并且ceph集群已经创建好存储池和文件系统
 ## 创建命名空间
 ```bash
 kubectl create namespace ceph
