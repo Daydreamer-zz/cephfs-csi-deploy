@@ -43,7 +43,7 @@ spec:
       priorityClassName: system-cluster-critical
       containers:
         - name: csi-provisioner
-          image: k8s.gcr.io/sig-storage/csi-provisioner:v3.0.0
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/csi-provisioner:v3.0.0
           args:
             - "--csi-address=$(ADDRESS)"
             - "--v=5"
@@ -60,7 +60,7 @@ spec:
             - name: socket-dir
               mountPath: /csi
         - name: csi-resizer
-          image: k8s.gcr.io/sig-storage/csi-resizer:v1.3.0
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/csi-resizer:v1.3.0
           args:
             - "--csi-address=$(ADDRESS)"
             - "--v=5"
@@ -76,7 +76,7 @@ spec:
             - name: socket-dir
               mountPath: /csi
         - name: csi-snapshotter
-          image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.2.0
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/csi-snapshotter:v4.2.0
           args:
             - "--csi-address=$(ADDRESS)"
             - "--v=5"
@@ -92,7 +92,7 @@ spec:
             - name: socket-dir
               mountPath: /csi
         - name: csi-cephfsplugin-attacher
-          image: k8s.gcr.io/sig-storage/csi-attacher:v3.3.0
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/csi-attacher:v3.3.0
           args:
             - "--v=5"
             - "--csi-address=$(ADDRESS)"
@@ -111,7 +111,7 @@ spec:
             capabilities:
               add: ["SYS_ADMIN"]
           # for stable functionality replace canary with latest release version
-          image: quay.io/cephcsi/cephcsi:canary
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/cephcsi:canary
           args:
             - "--nodeid=$(NODE_ID)"
             - "--type=cephfs"
@@ -148,7 +148,7 @@ spec:
             - name: keys-tmp-dir
               mountPath: /tmp/csi/keys
         - name: liveness-prometheus
-          image: quay.io/cephcsi/cephcsi:canary
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/cephcsi:canary
           args:
             - "--type=liveness"
             - "--endpoint=$(CSI_ENDPOINT)"

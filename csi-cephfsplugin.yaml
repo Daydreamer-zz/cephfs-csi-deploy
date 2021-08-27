@@ -25,7 +25,7 @@ spec:
           # created by privileged CSI driver container.
           securityContext:
             privileged: true
-          image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/csi-node-driver-registrar:v2.3.0
           args:
             - "--v=5"
             - "--csi-address=/csi/csi.sock"
@@ -47,7 +47,7 @@ spec:
               add: ["SYS_ADMIN"]
             allowPrivilegeEscalation: true
           # for stable functionality replace canary with latest release version
-          image: quay.io/cephcsi/cephcsi:canary
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/cephcsi:canary
           args:
             - "--nodeid=$(NODE_ID)"
             - "--type=cephfs"
@@ -101,7 +101,7 @@ spec:
         - name: liveness-prometheus
           securityContext:
             privileged: true
-          image: quay.io/cephcsi/cephcsi:canary
+          image: registry.cn-qingdao.aliyuncs.com/zz_google_containers/cephcsi:canary
           args:
             - "--type=liveness"
             - "--endpoint=$(CSI_ENDPOINT)"
